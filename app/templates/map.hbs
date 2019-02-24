@@ -1,0 +1,21 @@
+<p><code>{{input type="checkbox" checked=arab change=(action 'doSomething')}}</code> Arabo</p>
+{{#cl-leaflet-map componentaction='controlleraction' zoomControl=false attributionControl=false lat=lat lng=lng zoom=zoom  onClick=(action "reverseGeo" r) as |layers|}}
+<!-- onLoad="getMap" -->
+{{!-- layers.tile url="http://192.168.1.21:80/osm_tiles/{z}/{x}/{y}.png"--}}
+{{!-- layers.tile url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"--}}
+{{layers.tile url="https://webdev.datafluidity.com:9943/osmbcl/{z}/{x}/{y}.png"}}
+<LeafletFullscreenControl @position="topleft" />
+{{#layers.marker location = start}}
+{{/layers.marker}}
+{{/cl-leaflet-map}}
+{{#power-select
+  search=(action "searchGeo")
+  selected=selec
+  onchange=(action "updateCenter" value=selected)
+as |repo|}}
+{{repo.display_name}}
+
+{{/power-select}}
+{{way.display_name}}
+<br />
+<h3> ciao come stai?!!! </h3>
